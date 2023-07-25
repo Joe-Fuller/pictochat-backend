@@ -17,14 +17,8 @@ io.on("connection", (socket) => {
   console.log("New user connected");
 
   socket.on("message", (message) => {
-    console.log("Received message:", message);
-
-    const isImageMessage = message.includes("<img src=");
-    if (isImageMessage) {
-      io.emit("message", message);
-    } else {
-      io.emit("message", `${message}`);
-    }
+    console.log("Received message from:", message.nickname);
+    io.emit("message", message);
   });
 
   socket.on("disconnect", () => {
