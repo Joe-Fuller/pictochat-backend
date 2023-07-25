@@ -19,7 +19,12 @@ io.on("connection", (socket) => {
   socket.on("message", (message) => {
     console.log("Received message:", message);
 
-    io.emit("message", message);
+    const isImageMessage = message.includes("<img src=");
+    if (isImageMessage) {
+      io.emit("message", message);
+    } else {
+      io.emit("message", `${message}`);
+    }
   });
 
   socket.on("disconnect", () => {
