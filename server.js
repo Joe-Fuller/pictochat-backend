@@ -7,7 +7,7 @@ const app = express();
 
 const server = http.createServer(app);
 const io = socketIO(server, {
-  cors: { origin: "https://picto-chat.netlify.app/", methods: ["GET", "POST"] },
+  cors: { origin: "https://picto-chat.netlify.app", methods: ["GET", "POST"] },
 });
 app.use(cors());
 
